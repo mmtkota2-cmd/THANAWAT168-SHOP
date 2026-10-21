@@ -4,160 +4,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080808">
-  <meta name="description" content="THANAWAT168 SHOP ร้านค้าดิจิทัล">
-  <title>THANAWAT168 SHOP | Black Label</title>
+  <meta name="theme-color" content="#07090b">
+  <meta name="description" content="THANAWAT168 ร้านค้าดิจิทัลและสินค้าเกม">
+  <title>THANAWAT168 SHOP | Gold Terminal</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#home">
-      <span class="brand-mark">T<span>168</span></span>
-      <span class="brand-name">THANAWAT<span>168</span><small>BLACK LABEL · DIGITAL SHOP</small></span>
+      <span class="brand-mark">T<small>168</small></span>
+      <span class="brand-name">THANAWAT<span>168</span><small>DIGITAL SHOP</small></span>
     </a>
 
-    <nav>
-      <a href="#home">หน้าหลัก</a>
-      <a href="#categories">หมวดหมู่</a>
-      <a href="#products">สินค้าทั้งหมด</a>
-      <a href="#promotions">โปรโมชัน</a>
-    </nav>
+    <label class="search-box">
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="ค้นหาสินค้า เกม หรือบริการ..." aria-label="ค้นหาสินค้า">
+    </label>
 
-    <button id="cartBtn" class="cart-button" type="button">
-      <span>ตะกร้า</span><span id="cartCount">0</span>
-    </button>
-  </header>
-
-  <main id="home">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">THE PREMIUM DIGITAL STORE</p>
-        <h1>YOUR GAME.<br>YOUR <span>RULES.</span></h1>
-        <p class="hero-desc">
-          เปิดประสบการณ์ดิจิทัลในสไตล์ของคุณ
-          รวมสินค้าเกมและบริการดิจิทัลไว้ในที่เดียว
-        </p>
-        <div class="hero-actions">
-          <a href="#products" class="gold-button">เลือกซื้อสินค้า <span>↗</span></a>
-          <a href="#promotions" class="text-link">ดูโปรโมชัน</a>
-        </div>
-        <div class="hero-note">
-          <span class="status-dot"></span>
-          BLACK LABEL · DEMO STORE
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-frame">
-          <div class="frame-top"><span>THANAWAT168</span><span>EDITION 001</span></div>
-          <div class="hero-emblem">T<span>168</span></div>
-          <div class="frame-bottom">
-            <span>PLAY WITHOUT LIMITS</span>
-            <span>✦ PREMIUM ✦</span>
-          </div>
-        </div>
-        <div class="floating-label">EXCLUSIVE<br><strong>DIGITAL GOODS</strong></div>
-      </div>
-    </section>
-
-    <div class="announcement">
-      <span class="announcement-label">ประกาศ</span>
-      <p>ยินดีต้อนรับสู่ THANAWAT168 SHOP — ทดลองเลือกสินค้าและสั่งซื้อได้ฟรี</p>
-      <span class="announcement-star">✦</span>
+    <div class="trust-items">
+      <span>♛ <small>สินค้าหลากหลาย</small></span>
+      <span>⬡ <small>ตรวจสอบออเดอร์</small></span>
+      <span>ϟ <small>ระบบทดลอง</small></span>
     </div>
 
-    <section id="categories" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">DISCOVER</p>
-          <h2>หมวดหมู่<span class="gold-text">แนะนำ</span></h2>
+    <button id="cartBtn" class="cart-button" type="button">
+      🛒 <span id="cartCount">0</span>
+    </button>
+    <a href="#products" class="login-button">เลือกซื้อสินค้า ↗</a>
+  </header>
+
+  <div class="terminal-layout">
+    <aside class="sidebar">
+      <p class="side-label">MAIN MENU</p>
+      <a class="side-link active" href="#home"><span>⌂</span> หน้าหลัก</a>
+      <a class="side-link" href="#products"><span>▦</span> สินค้าทั้งหมด</a>
+      <a class="side-link" href="#products" data-side-category="topup"><span>♧</span> เติมเกม</a>
+      <a class="side-link" href="#products" data-side-category="digital"><span>▣</span> บัตรดิจิทัล</a>
+      <a class="side-link" href="#products" data-side-category="apps"><span>⌘</span> แอปและบริการ</a>
+      <a class="side-link" href="#products" data-side-category="other"><span>◇</span> สินค้าอื่น ๆ</a>
+      <div class="side-divider"></div>
+      <a class="side-link" href="#promotions"><span>✧</span> โปรโมชัน</a>
+      <a class="side-link" href="#howto"><span>ⓘ</span> วิธีสั่งซื้อ</a>
+
+      <div class="vip-card">
+        <span class="vip-crown">♛</span>
+        <p class="vip-title">THANAWAT<span>168</span></p>
+        <small>MEMBER CLUB</small>
+        <div class="side-divider"></div>
+        <p>◆ สะสมประวัติออเดอร์</p>
+        <p>◆ โปรโมชันพิเศษ</p>
+        <p>◆ ตรวจสอบรายการได้</p>
+        <a href="#products" class="vip-button">สำรวจสินค้า</a>
+      </div>
+
+      <div class="market-card">
+        <p class="side-label">POPULAR CATEGORIES</p>
+        <div><span>♢</span> เติมเกม <b>TOP</b></div>
+        <div><span>▣</span> บัตรดิจิทัล <b>NEW</b></div>
+        <div><span>⌘</span> แอปและบริการ <b>HOT</b></div>
+      </div>
+    </aside>
+
+    <main id="home" class="main-content">
+      <section class="hero">
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-grid"></div>
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+          <div class="hero-art-mark">T<span>168</span></div>
+          <span class="art-label art-label-one">DIGITAL GOODS</span>
+          <span class="art-label art-label-two">PREMIUM COLLECTION</span>
         </div>
-        <a class="outline-button" href="#products">สินค้าทั้งหมด ↗</a>
-      </div>
 
-      <div class="category-grid">
-        <button class="category-card" data-category="topup" type="button">
-          <span class="category-icon">♢</span>
-          <span class="category-title">เติมเกม</span>
-          <span class="category-subtitle">GAME TOP-UP</span>
-          <span class="category-arrow">↗</span>
-        </button>
-        <button class="category-card" data-category="digital" type="button">
-          <span class="category-icon">▣</span>
-          <span class="category-title">บัตรดิจิทัล</span>
-          <span class="category-subtitle">DIGITAL CARDS</span>
-          <span class="category-arrow">↗</span>
-        </button>
-        <button class="category-card" data-category="apps" type="button">
-          <span class="category-icon">⌘</span>
-          <span class="category-title">แอปและบริการ</span>
-          <span class="category-subtitle">APPS & SERVICES</span>
-          <span class="category-arrow">↗</span>
-        </button>
-        <button class="category-card" data-category="other" type="button">
-          <span class="category-icon">✧</span>
-          <span class="category-title">สินค้าอื่น ๆ</span>
-          <span class="category-subtitle">MORE COLLECTIONS</span>
-          <span class="category-arrow">↗</span>
-        </button>
-      </div>
-    </section>
-
-    <section id="promotions" class="promo-section">
-      <div class="promo-copy">
-        <p class="eyebrow">SPECIAL COLLECTION · 168</p>
-        <h2>MORE GAME.<br><span>MORE GLORY.</span></h2>
-        <p>ค้นพบสินค้าและข้อเสนอที่เหมาะกับสไตล์ของคุณ</p>
-        <a href="#products" class="gold-button">สำรวจสินค้า ↗</a>
-      </div>
-      <div class="promo-art" aria-hidden="true">
-        <div class="promo-ring"></div>
-        <div class="promo-diamond">168</div>
-        <span class="promo-caption">LIMITLESS<br>EXPERIENCE</span>
-      </div>
-      <span class="promo-watermark">168</span>
-    </section>
-
-    <section id="products" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE COLLECTION</p>
-          <h2>สินค้าทั้งหมด</h2>
-          <p class="section-desc">เลือกสิ่งที่ใช่สำหรับคุณ</p>
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> THANAWAT168 · DIGITAL MARKET</p>
+          <h1>LEVEL UP<br><span>YOUR GAME.</span></h1>
+          <p>ศูนย์รวมสินค้าเกมและดิจิทัลในสไตล์พรีเมียม เลือกดูสินค้าได้ในที่เดียว</p>
+          <div class="hero-points">
+            <span>✦ เลือกสินค้าได้ง่าย</span>
+            <span>✦ ดูยอดรวมก่อนยืนยัน</span>
+            <span>✦ ทดลองสั่งซื้อฟรี</span>
+          </div>
+          <a href="#products" class="gold-button">เลือกซื้อสินค้า <span>↗</span></a>
+          <small class="demo-note">DEMO STORE · ไม่มีการชำระเงินจริง</small>
         </div>
-        <span id="productTotal" class="muted"></span>
-      </div>
+        <div class="hero-number">168</div>
+      </section>
 
-      <div class="product-tools">
-        <div id="productFilters" class="filters">
-          <button class="filter active" data-category="all" type="button">ทั้งหมด</button>
-          <button class="filter" data-category="topup" type="button">เติมเกม</button>
-          <button class="filter" data-category="digital" type="button">บัตรดิจิทัล</button>
-          <button class="filter" data-category="apps" type="button">แอปและบริการ</button>
-          <button class="filter" data-category="other" type="button">อื่น ๆ</button>
+      <section class="ticker">
+        <span class="ticker-label">ประกาศ</span>
+        <span>ยินดีต้อนรับสู่ THANAWAT168 SHOP</span>
+        <span class="ticker-separator">✦</span>
+        <span>ร้านค้าดิจิทัลเวอร์ชันทดลอง</span>
+        <span class="ticker-separator">✦</span>
+        <span>เลือกสินค้าและทดลองใส่ตะกร้าได้ฟรี</span>
+      </section>
+
+      <section class="market-overview">
+        <div class="section-title">
+          <div><p class="eyebrow">MARKET OVERVIEW</p><h2>ภาพรวมร้านค้า</h2></div>
+          <span class="demo-pill">● DEMO DATA</span>
         </div>
-        <input id="searchInput" type="search" placeholder="ค้นหาสินค้า..." aria-label="ค้นหาสินค้า">
-      </div>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>▦ สินค้าตัวอย่าง</span>
+            <strong id="statProducts">08</strong>
+            <small>รายการในแค็ตตาล็อก</small>
+          </article>
+          <article class="stat-card">
+            <span>♢ หมวดหมู่</span>
+            <strong>04</strong>
+            <small>ประเภทสินค้า</small>
+          </article>
+          <article class="stat-card">
+            <span>🛒 ในตะกร้าของคุณ</span>
+            <strong id="statCart">00</strong>
+            <small>จำนวนชิ้นปัจจุบัน</small>
+          </article>
+          <article class="stat-card">
+            <span>ϟ โหมดร้านค้า</span>
+            <strong class="stat-demo">TEST</strong>
+            <small>ยังไม่รับชำระเงินจริง</small>
+          </article>
+        </div>
+      </section>
 
-      <div id="productGrid" class="product-grid"></div>
-      <p id="emptyMessage" class="empty-message" hidden>ไม่พบสินค้าที่ค้นหา</p>
-    </section>
+      <section id="promotions" class="promo-grid">
+        <article class="promo-card promo-gold">
+          <div class="promo-text">
+            <span class="promo-tag">SPECIAL OFFER</span>
+            <h3>LEVEL UP<br>YOUR COLLECTION</h3>
+            <p>ค้นหาสินค้าดิจิทัลที่ใช่สำหรับคุณ</p>
+            <a href="#products">สำรวจสินค้า ↗</a>
+          </div>
+          <span class="promo-symbol">✦</span>
+        </article>
+        <article class="promo-card promo-blue">
+          <div class="promo-text">
+            <span class="promo-tag">DIGITAL PICKS</span>
+            <h3>SMART<br>GAME SHOP</h3>
+            <p>รวมสินค้าเกมและบัตรดิจิทัล</p>
+            <a href="#categories">เลือกหมวดหมู่ ↗</a>
+          </div>
+          <span class="promo-symbol">◇</span>
+        </article>
+        <article class="promo-card promo-purple">
+          <div class="promo-text">
+            <span class="promo-tag">WEEKLY COLLECTION</span>
+            <h3>DISCOVER<br>SOMETHING NEW</h3>
+            <p>สำรวจสินค้าในแค็ตตาล็อก</p>
+            <a href="#products">ดูสินค้าทั้งหมด ↗</a>
+          </div>
+          <span class="promo-symbol">168</span>
+        </article>
+      </section>
 
-    <section class="service-strip">
-      <div><span>01</span><p><strong>เลือกอย่างอิสระ</strong><small>สำรวจสินค้าหลากหลายประเภท</small></p></div>
-      <div><span>02</span><p><strong>ชัดเจนทุกขั้นตอน</strong><small>ตรวจสอบยอดก่อนยืนยัน</small></p></div>
-      <div><span>03</span><p><strong>ทดลองได้ฟรี</strong><small>ระบบจำลอง ไม่มีการเรียกเก็บเงิน</small></p></div>
-    </section>
-  </main>
+      <section id="categories" class="shop-section">
+        <div class="section-title">
+          <div><p class="eyebrow">EXPLORE MARKET</p><h2>หมวดหมู่สินค้า</h2></div>
+          <a href="#products" class="view-all">ดูทั้งหมด ↗</a>
+        </div>
+        <div class="category-grid">
+          <button class="category-card" data-category="topup" type="button">
+            <span class="category-icon">♢</span><strong>เติมเกม</strong><small>GAME TOP-UP</small><span class="category-arrow">↗</span>
+          </button>
+          <button class="category-card" data-category="digital" type="button">
+            <span class="category-icon">▣</span><strong>บัตรดิจิทัล</strong><small>DIGITAL CARDS</small><span class="category-arrow">↗</span>
+          </button>
+          <button class="category-card" data-category="apps" type="button">
+            <span class="category-icon">⌘</span><strong>แอปและบริการ</strong><small>APPS & SERVICES</small><span class="category-arrow">↗</span>
+          </button>
+          <button class="category-card" data-category="other" type="button">
+            <span class="category-icon">◇</span><strong>สินค้าอื่น ๆ</strong><small>MORE COLLECTIONS</small><span class="category-arrow">↗</span>
+          </button>
+        </div>
+      </section>
 
-  <footer>
-    <a class="brand" href="#home">
-      <span class="brand-mark">T<span>168</span></span>
-      <span class="brand-name">THANAWAT<span>168</span><small>BLACK LABEL</small></span>
-    </a>
-    <p>© 2026 THANAWAT168 SHOP · DEMO VERSION</p>
-  </footer>
+      <section id="products" class="shop-section">
+        <div class="section-title">
+          <div><p class="eyebrow">LIVE CATALOGUE</p><h2>สินค้ายอดนิยม</h2><p class="section-desc">สินค้าตัวอย่างสำหรับทดลองระบบ</p></div>
+          <span id="productTotal" class="demo-pill">08 รายการ</span>
+        </div>
+
+        <div class="product-toolbar">
+          <div id="productFilters" class="filters">
+            <button class="filter active" data-category="all" type="button">ทั้งหมด</button>
+            <button class="filter" data-category="topup" type="button">เติมเกม</button>
+            <button class="filter" data-category="digital" type="button">บัตรดิจิทัล</button>
+            <button class="filter" data-category="apps" type="button">แอปและบริการ</button>
+            <button class="filter" data-category="other" type="button">อื่น ๆ</button>
+          </div>
+        </div>
+
+        <div id="productGrid" class="product-grid"></div>
+        <p id="emptyMessage" class="empty-message" hidden>ไม่พบสินค้าที่ค้นหา</p>
+      </section>
+
+      <section id="howto" class="service-strip">
+        <div><span>01</span><p><strong>เลือกสินค้า</strong><small>ค้นหาและเลือกหมวดหมู่ที่ต้องการ</small></p></div>
+        <div><span>02</span><p><strong>ตรวจสอบตะกร้า</strong><small>เช็กจำนวนสินค้าและยอดรวม</small></p></div>
+        <div><span>03</span><p><strong>สร้างออเดอร์จำลอง</strong><small>ทดสอบขั้นตอนโดยไม่มีการเรียกเก็บเงิน</small></p></div>
+      </section>
+
+      <footer class="footer">
+        <div class="brand">
+          <span class="brand-mark">T<small>168</small></span>
+          <span class="brand-name">THANAWAT<span>168</span><small>DIGITAL SHOP</small></span>
+        </div>
+        <p>© 2026 THANAWAT168 SHOP · DEMO VERSION</p>
+        <a href="#home">กลับด้านบน ↑</a>
+      </footer>
+    </main>
+  </div>
 
   <div id="cartOverlay" class="overlay" hidden>
     <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
