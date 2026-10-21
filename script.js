@@ -274,3 +274,53 @@ document.addEventListener("keydown", (event) => {
 
 renderProducts();
 renderCart();
+
+
+/* THANAWAT168 Gold Terminal — UI integration */
+
+document.querySelectorAll("[data-side-category]").forEach((link) => {
+  link.addEventListener("click", () => {
+    const category = link.dataset.sideCategory;
+    const filter = document.querySelector(
+      `#productFilters [data-category="${category}"]`
+    );
+
+    if (filter) filter.click();
+  });
+});
+
+function updateTerminalStats() {
+  const productStat = document.getElementById("statProducts");
+  const cartStat = document.getElementById("statCart");
+  const cartCount = document.getElementById("cartCount");
+
+  if (productStat) {
+    const count = document.querySelectorAll(".product-card").length;
+    productStat.textContent = String(count).padStart(2, "0");
+  }
+
+  if (cartStat && cartCount) {
+    cartStat.textContent = String(
+      Number(cartCount.textContent) || 0
+    ).padStart(2, "0");
+  }
+}
+
+const productGridForStats = document.getElementById("productGrid");
+const cartCountForStats = document.getElementById("cartCount");
+
+if (productGridForStats) {
+  new MutationObserver(updateTerminalStats).observe(
+    productGridForStats,
+    { childList: true }
+  );
+}
+
+if (cartCountForStats) {
+  new MutationObserver(updateTerminalStats).observe(
+    cartCountForStats,
+    { childList: true, characterData: true, subtree: true }
+  );
+}
+
+updateTerminalStats();
