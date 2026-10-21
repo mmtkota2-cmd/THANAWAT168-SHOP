@@ -1,14 +1,48 @@
 
-const products = [
-  { id: 1, name: "แพ็กเติมเกม Starter", category: "topup", price: 49, icon: "♢", tag: "เติมเกม", description: "แพ็กทดลองสำหรับระบบเติมเกม" },
-  { id: 2, name: "แพ็กเติมเกม Premium", category: "topup", price: 99, icon: "✦", tag: "เติมเกม", description: "แพ็กตัวอย่างระดับพรีเมียม" },
-  { id: 3, name: "Game Gift Card", category: "digital", price: 150, icon: "▣", tag: "บัตรดิจิทัล", description: "บัตรดิจิทัลตัวอย่าง" },
-  { id: 4, name: "Digital Wallet", category: "digital", price: 200, icon: "◇", tag: "บัตรดิจิทัล", description: "เครดิตกระเป๋าเงินจำลอง" },
-  { id: 5, name: "Android App Pack", category: "apps", price: 79, icon: "⌘", tag: "แอปและบริการ", description: "แพ็กแอปตัวอย่าง" },
-  { id: 6, name: "Premium App Service", category: "apps", price: 129, icon: "✧", tag: "แอปและบริการ", description: "บริการดิจิทัลตัวอย่าง" },
-  { id: 7, name: "Gaming Accessories", category: "other", price: 250, icon: "◈", tag: "สินค้าอื่น ๆ", description: "สินค้าเกมตัวอย่าง" },
-  { id: 8, name: "Mystery Game Box", category: "other", price: 99, icon: "✺", tag: "สินค้าอื่น ๆ", description: "กล่องตัวอย่าง ไม่มีการส่งสินค้าจริง" }
-];
+let products = [];
+
+const productIcons = {
+  topup: "◈",
+  digital: "▣",
+  apps: "✧",
+  other: "●"
+};
+
+function mapSupabaseProduct(row) {
+  return {
+    id: row.id,
+    sku: row.sku,
+    name: row.name,
+    category: row.category,
+    price: Number(row.price),
+    icon: productIcons[row.category] || "◈",
+    tag: row.category === "topup"
+      ? "เติมเกม"
+      : row.category === "digital"
+      ? "บัตรดิจิทัล"
+      : row.category === "apps"
+      ? "แอปและบริการ"
+      : "สินค้าอื่น ๆ",
+    description: row.description || ""
+  };
+}
+
+async function loadProductsFromSupabase() {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("id, sku, name, category, description, price, stock")
+    .eq("is_active", true)
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error("Supabase:", error.message);
+    return;
+  }
+
+  products = (data || []).map(mapSupabaseProduct);
+  renderProducts();
+}
+
 
 const $ = (selector) => document.querySelector(selector);
 
