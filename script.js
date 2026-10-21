@@ -358,3 +358,4 @@ if (cartCountForStats) {
 }
 
 updateTerminalStats();
+loadProductsFromSupabase();
