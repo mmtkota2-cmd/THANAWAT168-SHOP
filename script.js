@@ -35,9 +35,10 @@ async function loadProductsFromSupabase() {
     .order("id", { ascending: true });
 
   if (error) {
-    console.error("Supabase:", error.message);
-    return;
-  }
+  console.error("Supabase:", error.message);
+  alert("โหลดสินค้าไม่สำเร็จ: " + error.message);
+  return;
+}
 
   products = (data || []).map(mapSupabaseProduct);
   renderProducts();
