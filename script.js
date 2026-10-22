@@ -299,7 +299,7 @@ $("#paymentSection").hidden = false;
 
     const note = document.createElement("p");
     note.textContent =
-      "ออเดอร์บันทึกแล้ว ขั้นตอนชำระเงินจะแสดงเมื่อเชื่อมต่อ PromptPay";
+  "กรุณาสแกน QR PromptPay และโอนเงินให้ตรงกับยอดออเดอร์ จากนั้นรอร้านค้าตรวจสอบยอดเงิน";
     note.className = "muted";
     summary.appendChild(note);
 
