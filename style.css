@@ -200,3 +200,46 @@ a{color:inherit;text-decoration:none}
   .service-strip{grid-template-columns:1fr}
   .footer{align-items:flex-start;flex-direction:column}
 }
+
+.payment-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.payment-divider {
+  height: 1px;
+  background: rgba(233, 189, 75, 0.35);
+  margin-bottom: 24px;
+}
+
+.payment-section h3 {
+  margin: 8px 0;
+}
+
+.payment-qr-frame {
+  width: min(100%, 300px);
+  margin: 18px auto;
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.payment-qr {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.payment-amount {
+  display: block;
+  margin: 8px 0 14px;
+  color: #e9bd4b;
+  font-size: 1.8rem;
+}
+
+.payment-warning {
+  color: #e9bd4b;
+  font-weight: 600;
+  margin: 16px 0;
+}
+
