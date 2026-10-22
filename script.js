@@ -237,62 +237,88 @@ $("#checkoutBtn").addEventListener("click", () => {
   open(checkoutOverlay);
 });
 
-$("#checkoutForm").addEventListener("submit", (event) => {
+$("#checkoutForm").addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const items = cartItems();
   const name = $("#customerName").value.trim();
   const contact = $("#customerContact").value.trim();
 
-  if (!items.length || !name || !contact) return;
+  if (!items.length || !name || !contact) {
+    alert("กรุณากรอกข้อมูลให้ครบและเลือกสินค้า");
+    return;
+  }
 
-  const order = {
-    number: "DEMO-" + Date.now().toString().slice(-8),
-    name,
-    contact,
-    items: items.map(({ id, name, price, quantity }) => ({
-      id, name, price, quantity
-    })),
-    total: total(),
-    status: "DEMO — ยังไม่ชำระเงิน",
-    createdAt: new Date().toISOString()
-  };
+  const submitButton = event.currentTarget.querySelector(
+    'button[type="submit"]'
+  );
+
+  if (submitButton?.disabled) return;
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "กำลังสร้างออเดอร์...";
+  }
 
   try {
-    const previous = JSON.parse(
-      localStorage.getItem("thanawat168-demo-orders") || "[]"
+    const { data, error } = await supabaseClient.rpc(
+      "create_order",
+      {
+        p_customer_name: name,
+        p_customer_contact: contact,
+        p_items: items.map((item) => ({
+          product_id: item.id,
+          quantity: item.quantity
+        }))
+      }
     );
 
-    const orders = Array.isArray(previous) ? previous : [];
-    orders.push(order);
+    if (error) throw error;
 
-    localStorage.setItem(
-      "thanawat168-demo-orders",
-      JSON.stringify(orders.slice(-20))
+    if (!data || !data.success) {
+      throw new Error("ไม่ได้รับข้อมูลยืนยันออเดอร์");
+    }
+
+    // แสดงข้อมูลจาก Supabase ไม่ใช้ยอดจากหน้าเว็บ
+    $("#orderNumber").textContent = data.order_number;
+
+    const summary = $("#orderSummary");
+    summary.replaceChildren();
+
+    const totalLine = document.createElement("p");
+    totalLine.textContent = "ยอดชำระ: " + money(data.total_amount);
+    summary.appendChild(totalLine);
+
+    const status = document.createElement("p");
+    status.textContent = "สถานะ: รอชำระเงิน";
+    status.className = "muted";
+    summary.appendChild(status);
+
+    const note = document.createElement("p");
+    note.textContent =
+      "ออเดอร์บันทึกแล้ว ขั้นตอนชำระเงินจะแสดงเมื่อเชื่อมต่อ PromptPay";
+    note.className = "muted";
+    summary.appendChild(note);
+
+    cart = {};
+    saveCart();
+    renderCart();
+    $("#checkoutForm").reset();
+
+    close(checkoutOverlay);
+    open(orderOverlay);
+  } catch (error) {
+    console.error("Create order error:", error);
+    alert(
+      "สร้างออเดอร์ไม่สำเร็จ: " +
+      (error.message || "กรุณาลองใหม่")
     );
-  } catch {}
-
-  $("#orderNumber").textContent = order.number;
-
-  const summary = $("#orderSummary");
-  summary.replaceChildren();
-
-  const line = document.createElement("p");
-  line.textContent = `จำนวน ${items.reduce((n, p) => n + p.quantity, 0)} ชิ้น · รวม ${money(order.total)}`;
-  summary.appendChild(line);
-
-  const status = document.createElement("p");
-  status.textContent = order.status;
-  status.className = "muted";
-  summary.appendChild(status);
-
-  cart = {};
-  saveCart();
-  renderCart();
-  $("#checkoutForm").reset();
-
-  close(checkoutOverlay);
-  open(orderOverlay);
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "ยืนยันสั่งซื้อ";
+    }
+  }
 });
 
 [cartOverlay, checkoutOverlay, orderOverlay].forEach((overlay) => {
