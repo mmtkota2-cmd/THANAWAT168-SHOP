@@ -258,8 +258,39 @@
       <h2 id="orderTitle">สร้างออเดอร์สำเร็จ</h2>
       <p>หมายเลขออเดอร์</p>
       <strong id="orderNumber" class="order-number"></strong>
-      <div id="orderSummary"></div>
-      <button id="closeOrder" class="gold-button full-width" type="button">กลับไปหน้าร้าน</button>
+      
+<div id="orderSummary"></div>
+
+<div id="paymentSection" class="payment-section" hidden>
+  <div class="payment-divider"></div>
+  <p class="eyebrow">PROMPTPAY PAYMENT</p>
+  <h3>สแกน QR เพื่อชำระเงิน</h3>
+  <p class="muted">กรุณาตรวจสอบยอดเงินให้ตรงกับออเดอร์ก่อนโอน</p>
+
+  <div class="payment-qr-frame">
+    <img
+      src="promptpay-qr.jpeg"
+      alt="QR PromptPay สำหรับชำระเงิน"
+      class="payment-qr"
+    >
+  </div>
+
+  <p>ยอดที่ต้องโอน</p>
+  <strong id="paymentAmount" class="payment-amount"></strong>
+
+  <p class="small muted">
+    QR นี้ไม่ระบุยอดเงิน กรุณากรอกยอดตามที่แสดงด้านบน
+  </p>
+
+  <p class="payment-warning">
+    สถานะ: รอตรวจสอบการชำระเงิน
+  </p>
+</div>
+
+<button id="closeOrder" class="gold-button full-width" type="button">
+  กลับไปหน้าร้าน
+</button>
+
       <p class="small muted center">ออเดอร์นี้อยู่ในเบราว์เซอร์เครื่องนี้เท่านั้น</p>
     </section>
   </div>
