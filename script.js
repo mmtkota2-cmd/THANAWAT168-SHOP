@@ -260,6 +260,7 @@ $("#checkoutForm").addEventListener("submit", async (event) => {
     submitButton.textContent = "กำลังสร้างออเดอร์...";
   }
 
+  $("#paymentSection").hidden = true;
   try {
     const { data, error } = await supabaseClient.rpc(
       "create_order",
@@ -281,6 +282,8 @@ $("#checkoutForm").addEventListener("submit", async (event) => {
 
     // แสดงข้อมูลจาก Supabase ไม่ใช้ยอดจากหน้าเว็บ
     $("#orderNumber").textContent = data.order_number;
+    $("#paymentAmount").textContent = money(data.total_amount);
+$("#paymentSection").hidden = false;
 
     const summary = $("#orderSummary");
     summary.replaceChildren();
